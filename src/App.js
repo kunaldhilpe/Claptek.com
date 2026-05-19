@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createAppTheme } from "./theme/theme";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop"; // Import the component
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import SolutionsPage from "./pages/SolutionsPage";
@@ -23,6 +24,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
+        <ScrollToTop /> {/* Add this here - inside Router, before content */}
         <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
           <Navbar toggleTheme={toggleTheme} mode={mode} />
           <Box component="main" sx={{ flexGrow: 1 }}>
@@ -37,8 +39,7 @@ export default function App() {
               <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </Box>
-      <SponsorLogos />
-
+          <SponsorLogos />
           <Footer />
         </Box>
       </Router>
